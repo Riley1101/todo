@@ -1,38 +1,176 @@
-.App {
-  text-align: center;
+:root{
+    --spacing:1em;
+    --spacing--lg:3em;
+    --radius:10px;
+    --line-h:1.5;
+
+    --clr-primary:#36C3FF;
+    --clr-accent:#247BA0;
+    --clr-danger:#FF0B0B;
+    --clr-light:#FFf;
+    --clr--dark:#50514F;
+    --clr--p:#272727;
+
+    --fs-md:1rem;
+    --fs-lg:2rem;
+    --fs-xl:3rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*::before,*::after,*{
+    box-sizing: border-box;
+    margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+    width: 100%;
+    height: 100vh;
+    background-color:var(--clr-primary);
+    display: grid;
+    place-items: center;
+    line-height: var(--line-h);
+    font-family: sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.todo{
+    background-color: var(--clr-light);
+    border-radius: var(--radius);
+    padding: var(--spacing--lg);
+    padding-bottom:var(--spacing);
+
+    display: grid;
+    grid-template-columns:100% ;
+    grid-template-rows: 5em 5em auto 5em;
+
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.521);
 }
 
-.App-link {
-  color: #61dafb;
+.todo__date{
+    grid-column: 1/2;
+    grid-row: 1/2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo__date h1{
+    font-size: var(--fs-lg);
+    color: var(--clr-accent);
+    font-weight: normal;
+}
+
+.todo__date p{
+    font-size: var(--fs-normal);
+    color: var(--clr--dark);
+}
+
+.todo__form {
+    position: relative;
+    grid-column: 1/2;
+    grid-row: 2/3;
+
+    display: flex;
+    align-items: center;
+}
+
+.todo__form::before {
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    height: 50%;
+    background-color: var(--clr-accent);
+
+}
+
+.todo__form__input{
+    flex: 1 1 80%;
+    border: none;
+    outline: none;
+    margin: var(--spacing);
+    font-size: 1rem;
+    padding: 0;
+}
+
+.todo__form__submit{
+    flex: 1 1 20%;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.todo__list{
+    grid-row: 3/4;
+    margin-block: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--spacing);
+    gap: 1px;
+}
+
+.todo__list__item__container{
+    background-color: rgba(236, 236, 236, 0.301);
+    padding: var(--spacing);
+    gap: var(--spacing);
+}
+
+.created_date{
+    display: block;
+    width: 100%;
+    text-align: right;
+    opacity: 0.2;
+    font-size: .9rem;
+
+}
+
+.todo__list__item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing);
+
+}
+.todo__list__item input{
+    appearance: none;
+    visibility: hidden;
+    position: absolute;
+    pointer-events: none;
+        
+}
+.todo__list__item label{
+    font-size: var(--fs-md);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--clr--p);
+        
+}
+.todo__list__item__box{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: solid 1px var(--clr-accent);
+    cursor: pointer;
+}
+.todo__list__item__box--active{
+    background-color: var(--clr-accent);
+        
+}
+
+
+
+
+.todo__remove{
+    grid-column: 1/2;
+    grid-row: 4/5;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--clr-danger);
+}
+
+
+.todo__remove__btn {
+    cursor: pointer;
 }
